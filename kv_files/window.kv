@@ -1,0 +1,180 @@
+WindowManager:
+	Intro:
+	Login:
+	Admin:
+	Register:
+<Intro>:
+	name: "Intro"
+	BoxLayout: 
+		orientation: 'vertical'
+		spacing: 10
+		padding: 50
+		Image:
+			source:'./img/logo.jpeg'
+		Label:
+			text:'KADPOLY STAFF ATTENDANCE SYSTEM \n WITH FACE RECOGNITION USING PYTHON'
+			font_size:'23sp'
+			halign:"center"
+		Button:
+			text:'Admin Login'
+			size_hint:(None,None) 
+			width: 200
+			height: 70
+			pos_hint: {'center_x': 0.5}
+			on_release: 
+				app.root.current ='Login' 
+		Button:
+			text: 'Take Attendance'
+			size_hint: (None,None)
+			width: 200
+			height: 70
+			pos_hint: {'center_x': 0.5}
+			on_release: 
+				app.root.current ='Login' 
+<Login>:
+	name: "Login"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+		padding: 30
+		Image:
+			source:'./img/logo.jpeg'
+        Label:
+            text: 'ADMIN LOGIN SCREEN'
+            font_size: 32
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Username'
+                font_size: 18
+                text_size: root.width-60, 20
+
+            TextInput:
+                id: username
+                multiline:False
+                font_size: 20
+				hint_text: 'Enter Username'
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Password'
+                halign: 'left'
+                font_size: 18
+                text_size: root.width-60, 20
+
+            TextInput:
+                id: password
+                multiline:False
+                password:True
+                font_size: 20
+				hint_text: 'Enter Password'
+
+        Button:
+            text: 'Login'
+            font_size: 18
+			on_release:
+				on_press: root.do_login(username.text, password.text)
+<Admin>:
+	name: "Admin"
+	BoxLayout: 
+		orientation: 'vertical'
+		spacing: 20
+		padding: 50
+		Image:
+			source:'./img/logo.jpeg'
+		Label:
+			text: 'ADMIN DASHBAORD'
+            font_size: 20
+		BoxLayout:
+            orientation: 'vertical'
+			Button:
+				text: 'Register Staff'
+				size_hint: (None,None)
+				width: 200
+				height: 70
+				pos_hint: {'center_x': 0.5}
+				on_release: 
+					app.root.current ='Register'
+		BoxLayout:
+			orientation: 'vertical'
+			Button:
+				text: 'Logout'
+				size_hint: (None,None)
+				width: 200
+				height: 70
+				pos_hint: {'center_x': 0.5}
+				on_release: 
+					app.root.current ='Login'
+<Register>:
+	name: "Register"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+		padding: 30
+        Label:
+            text: 'REGISTER STAFF'
+            font_size: 26
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Staff ID'
+                font_size: 18
+                text_size: root.width-60, 20
+
+            TextInput:
+                id: staff_id
+                multiline:False
+                font_size: 20
+				hint_text: 'Enter Staff ID'
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Name'
+                font_size: 18
+                text_size: root.width-60, 20
+
+            TextInput:
+                id: name
+                multiline:False
+                font_size: 20
+				hint_text: 'Enter Staff Name'
+		BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Email'
+                font_size: 18
+                text_size: root.width-60, 20
+
+            TextInput:
+                id: email
+                multiline:False
+                font_size: 20
+				hint_text: 'Enter Staff Email'
+		Button:
+            text: 'Snap Staff'
+            font_size: 14
+			size_hint:(None,None) 
+			height: 50
+			pos_hint: {'center_x': 0.5}
+			on_release:
+				on_press: root.snap(staff_id.text)
+        Button:
+            text: 'Login'
+            font_size: 14
+			size_hint:(None,None) 
+			height: 50
+			pos_hint: {'center_x': 0.5}
+			on_release:
+				on_press: root.register(username.text, password.text)
+		Button:
+            text: 'Go Back'
+            font_size: 14
+			size_hint:(None,None) 
+			height: 50
+			on_release:
+				app.root.current ='Admin'
+			 
